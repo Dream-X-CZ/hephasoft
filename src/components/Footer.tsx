@@ -12,10 +12,6 @@ const navigation = [
       { title: 'RenewBody', href: '/reference/renewbody' },
       { title: 'Ask-me', href: '/reference/ask-me' },
       {
-        title: 'Maturitní ples Brazílie',
-        href: '/reference/maturitni-ples-brazilie-g4a-a-o8',
-      },
-      {
         title: (
           <>
             Zobrazit všechny <span aria-hidden="true">&rarr;</span>

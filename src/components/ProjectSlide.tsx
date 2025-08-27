@@ -3,12 +3,12 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const featuredTestimonial = {
-  body: 'S rezervační aplikací od Hephasoftu a jejich marketingovou pomocí se nám podařilo prodat neuvěřitelné množství lístků na ples. Aplikace fungovala skvěle a marketing na sítích zasáhl obrovské množství lidí organicky. Jsme nadšení z výsledků!',
+  body: 'Děkuji! Hephasoft se o všechno postarali a musím říct, že jsou to rychlíci. Poslala jsem jim jen texty na web, soubor s logem a popsala jim svoji hrubou představu o webu a během pár dní vše nadesignovali a web spustili. Dokonce mi na něm udělali kompletní SEO a zřídili mi k němu doménu i s emailem. Jsem s nimi maximálně spokojená a určitě s nimi budu spolupracovat i v budoucnu.',
   author: {
-    name: 'Adam Křivský',
-    handle: 'adamkrivsky',
-    imageUrl: '/adam-krivsky.jpeg',
-    logoUrl: '/plakat_upscayled.png',
+    name: 'Jana Bartošová',
+    handle: 'jancifotio',
+    imageUrl: '/jana-bartosova.png',
+    logoUrl: '/jana-bartosova.png',
   },
 }
 const testimonials = [

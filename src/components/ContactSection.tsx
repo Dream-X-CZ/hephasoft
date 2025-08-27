@@ -17,7 +17,7 @@ export function ContactSection() {
                 Napište nám
               </Button>
             </div>
-            <div className="mt-10 border-t border-accent/70 pt-10">
+            <div className="mt-10 border-t border-accent/70 pt-10 hidden">
               <h3 className="font-display text-base font-semibold text-white">
                 Naše sídla
               </h3>

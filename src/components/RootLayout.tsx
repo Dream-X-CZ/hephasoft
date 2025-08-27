@@ -231,7 +231,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
             <div className="relative bg-accent before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-accent/80">
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
-                  <div>
+                  <div className='hidden'>
                     <h2 className="font-display text-base font-semibold text-white">
                       Naše sídla
                     </h2>

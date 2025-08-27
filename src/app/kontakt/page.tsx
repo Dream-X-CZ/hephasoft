@@ -11,7 +11,7 @@ import ContactForm from '@/components/ContactForm'
 
 function ContactDetails() {
   return (
-    <div>
+    <div className="hidden">
       <h2 className="font-display text-base font-semibold text-accent">
         Naše sídla
       </h2>

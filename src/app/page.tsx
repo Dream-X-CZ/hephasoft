@@ -28,13 +28,9 @@ import TypewriterAnimation from '@/components/TypewriterAnimation'
 
 const clients = [
   ['Penef', logoPenefLight],
-  ['DreamPro', logoDreampro],
-  ['Elimon', logoElimon],
   ['Vektoring', logoVektoring],
   ['Fdrive', logoFdrive],
   ['Ask-me', logoAskme],
-  ['Vesuf', logoVesuf],
-  ['DÚK', logoDUK],
 ]
 
 function Clients() {
@@ -252,7 +248,9 @@ export default async function Home() {
       </Testimonial>
       <Service />
       <Timeline />
-      <Kariera />
+      <div className='hidden'>
+        <Kariera />
+      </div>
       <ContactSection />
     </>
   )
