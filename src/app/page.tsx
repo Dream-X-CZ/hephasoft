@@ -25,6 +25,7 @@ import logoDUK from '@/images/clients/duk/duk-logo.svg'
 
 // Import klientské komponenty (s direktivou "use client")
 import TypewriterAnimation from '@/components/TypewriterAnimation'
+import { SectionDivider } from '@/components/SectionDivider'
 
 const clients = [
   ['Penef', logoPenefLight],
@@ -233,7 +234,11 @@ export default async function Home() {
 
       <Clients />
 
+      <SectionDivider variant="aurora" label="Naše práce" />
+
       <CaseStudies caseStudies={caseStudies} />
+
+      <SectionDivider variant="wave" label="Spokojení klienti" />
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
@@ -246,11 +251,17 @@ export default async function Home() {
         němu doménu i s emailem. Jsem s nimi maximálně spokojená a určitě s nimi
         budu spolupracovat i v budoucnu.
       </Testimonial>
+
+      <SectionDivider variant="pulse" label="Co nabízíme" />
       <Service />
+
+      <SectionDivider variant="wave" label="Jak pracujeme" />
       <Timeline />
       <div className='hidden'>
         <Kariera />
       </div>
+
+      <SectionDivider variant="aurora" label="Spojte se s námi" />
       <ContactSection />
     </>
   )
