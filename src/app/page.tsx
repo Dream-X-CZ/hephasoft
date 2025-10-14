@@ -1,7 +1,6 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
 
 // Import dalších serverových komponent
 import { ContactSection } from '@/components/ContactSection'
@@ -26,7 +25,6 @@ import logoDUK from '@/images/clients/duk/duk-logo.svg'
 
 // Import klientské komponenty (s direktivou "use client")
 import TypewriterAnimation from '@/components/TypewriterAnimation'
-import { ScrollAnimationSection } from '@/components/ScrollAnimationSection'
 
 const clients = [
   ['Penef', logoPenefLight],
@@ -35,14 +33,9 @@ const clients = [
   ['Ask-me', logoAskme],
 ]
 
-function Clients({ className }: { className?: string }) {
+function Clients() {
   return (
-    <div
-      className={clsx(
-        'rounded-4xl bg-accent py-20 sm:py-32',
-        className ?? 'mt-24 sm:mt-32 lg:mt-56',
-      )}
-    >
+    <div className="mt-24 rounded-4xl bg-accent py-20 sm:mt-32 sm:py-32 lg:mt-56">
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
@@ -84,7 +77,10 @@ function CaseStudies({
 }) {
   return (
     <>
-      <SectionIntro title="Vytváříme řešení na míru pro vás" className="mt-24 sm:mt-32 lg:mt-40">
+      <SectionIntro
+        title="Vytváříme řešení na míru pro vás"
+        className="mt-24 sm:mt-32 lg:mt-40"
+      >
         <p>
           Od moderních webů přes intuitivní CRM až po e-shopy, naše řešení jsou
           kovaná s vášní a precizností. Jako malý, ale dynamický tým se
@@ -235,50 +231,27 @@ export default async function Home() {
         </FadeIn>
       </Container>
 
-      <ScrollAnimationSection
-        variant="parallax"
-        className="mt-24 sm:mt-32 lg:mt-56"
-        innerClassName="rounded-4xl"
-      >
-        <Clients className="mt-0" />
-      </ScrollAnimationSection>
+      <Clients />
 
-      <ScrollAnimationSection variant="tilt">
-        <CaseStudies caseStudies={caseStudies} />
-      </ScrollAnimationSection>
+      <CaseStudies caseStudies={caseStudies} />
 
-      <ScrollAnimationSection
-        variant="spotlight"
+      <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
-        innerClassName="rounded-[3rem]"
+        client={{ name: 'RenewBody', logo: logoPenefDark }}
       >
-        <Testimonial client={{ name: 'RenewBody', logo: logoPenefDark }}>
-          Děkuji! Hephasoft se o všechno postarali a musím říct, že jsou to
-          rychlíci. Poslala jsem jim jen texty na web, soubor s logem a popsala
-          jim svoji hrubou představu o webu a během pár dní vše nadesignovali a
-          web spustili. Dokonce mi na něm udělali kompletní SEO a zřídili mi k
-          němu doménu i s emailem. Jsem s nimi maximálně spokojená a určitě s nimi
-          budu spolupracovat i v budoucnu.
-        </Testimonial>
-      </ScrollAnimationSection>
-      <ScrollAnimationSection
-        variant="parallax"
-        className="mt-24 sm:mt-32 lg:mt-40"
-        innerClassName="rounded-[2.5rem] bg-white/80 p-2 shadow-[0_60px_120px_-80px_rgba(15,23,42,0.55)] backdrop-blur"
-      >
-        <Service />
-      </ScrollAnimationSection>
+        Děkuji! Hephasoft se o všechno postarali a musím říct, že jsou to
+        rychlíci. Poslala jsem jim jen texty na web, soubor s logem a popsala
+        jim svoji hrubou představu o webu a během pár dní vše nadesignovali a
+        web spustili. Dokonce mi na něm udělali kompletní SEO a zřídili mi k
+        němu doménu i s emailem. Jsem s nimi maximálně spokojená a určitě s nimi
+        budu spolupracovat i v budoucnu.
+      </Testimonial>
+      <Service />
       <Timeline />
       <div className='hidden'>
         <Kariera />
       </div>
-      <ScrollAnimationSection
-        variant="spotlight"
-        className="mt-24 sm:mt-32 lg:mt-40"
-        innerClassName="rounded-[3rem]"
-      >
-        <ContactSection className="mt-0" />
-      </ScrollAnimationSection>
+      <ContactSection />
     </>
   )
 }
