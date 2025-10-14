@@ -1,11 +1,13 @@
+import clsx from 'clsx'
+
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Offices } from '@/components/Offices'
 
-export function ContactSection() {
+export function ContactSection({ className }: { className?: string }) {
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
+    <Container className={clsx('mt-24 sm:mt-32 lg:mt-40', className)}>
       <FadeIn className="-mx-6 rounded-4xl bg-accent px-6 py-20 sm:mx-0 sm:py-32 md:px-12">
         <div className="mx-auto max-w-4xl">
           <div className="max-w-xl">

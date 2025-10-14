@@ -1,12 +1,16 @@
+"use client"
+
 import Link from 'next/link'
 import React from 'react'
 import { FaUsers, FaShoppingCart, FaGlobe, FaMobileAlt } from 'react-icons/fa'
+import { motion, useReducedMotion } from 'framer-motion'
 
 interface ServiceCardProps {
   title: string
   description: string
   bgColor: string // Hex kód barvy pozadí
   icon?: React.ReactNode
+  index: number
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -14,11 +18,45 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   description,
   bgColor,
   icon,
+  index,
 }) => {
+  let shouldReduceMotion = useReducedMotion()
+  let hiddenState = shouldReduceMotion
+    ? { opacity: 0 }
+    : { opacity: 0, y: 40, scale: 0.95 }
+  let visibleState = shouldReduceMotion
+    ? { opacity: 1 }
+    : { opacity: 1, y: 0, scale: 1 }
+
   return (
-    <div
-      className="flex items-center justify-between rounded-2xl p-6"
+    <motion.div
+      className="flex items-center justify-between rounded-2xl p-6 shadow-lg shadow-black/5"
       style={{ backgroundColor: bgColor }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-10% 0px' }}
+      custom={index}
+      variants={{
+        hidden: hiddenState,
+        visible: () => ({
+          ...visibleState,
+          transition: {
+            type: 'spring',
+            stiffness: 120,
+            damping: 22,
+            delay: index * 0.08,
+          },
+        }),
+      }}
+      whileHover={
+        shouldReduceMotion
+          ? undefined
+          : {
+              y: -6,
+              scale: 1.02,
+              transition: { type: 'spring', stiffness: 260, damping: 20 },
+            }
+      }
     >
       <div className="max-w-md">
         <h3 className="mb-2 text-xl font-semibold text-white">{title}</h3>
@@ -39,11 +77,42 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           </svg>
         )}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 const ServiceSection: React.FC = () => {
+  const services = [
+    {
+      title: 'Tvorba CRM',
+      description:
+        'Naše CRM systémy jsou kované s precizností, aby optimalizovaly vaše obchodní procesy a posilovaly vztahy se zákazníky. S naším CRM získáte nástroj, který přemění data na skutečnou hodnotu pro váš byznys.',
+      bgColor: '#25374A',
+      icon: <FaUsers className="h-6 w-6" />,
+    },
+    {
+      title: 'Tvorba E-Shopů',
+      description:
+        'Koveme e-commerce platformy, které přetvářejí nákupní zážitek do plynulého a efektivního procesu. Od návrhu až po finální implementaci – dbáme na každý detail, aby váš online obchod zářil.',
+      bgColor: '#1C2D41',
+      icon: <FaShoppingCart className="h-6 w-6" />,
+    },
+    {
+      title: 'Tvorba webových stránek',
+      description:
+        'Vaše webová prezentace je vaší digitální vizitkou. Koveme weby, které přeměňují návštěvníky na věrné zákazníky a pomáhají vám vystoupit z davu.',
+      bgColor: '#132337',
+      icon: <FaGlobe className="h-6 w-6" />,
+    },
+    {
+      title: 'Tvorba aplikací',
+      description:
+        'Vstupte do světa mobilních a webových aplikací s řešeními, která jsou vytvořená právě pro vás. Koveme digitální nástroje, které vám pomohou efektivně řídit váš byznys a zůstat vždy o krok napřed.',
+      bgColor: '#0A192F',
+      icon: <FaMobileAlt className="h-6 w-6" />,
+    },
+  ]
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-8">
       {/* Grid kontejner s 2 sloupci, kde větší horizontální mezera */}
@@ -74,30 +143,9 @@ const ServiceSection: React.FC = () => {
 
         {/* Pravý sloupec – kartičky služeb */}
         <div className="space-y-4">
-          <ServiceCard
-            title="Tvorba CRM"
-            description="Naše CRM systémy jsou kované s precizností, aby optimalizovaly vaše obchodní procesy a posilovaly vztahy se zákazníky. S naším CRM získáte nástroj, který přemění data na skutečnou hodnotu pro váš byznys."
-            bgColor="#25374A"
-            icon={<FaUsers className="h-6 w-6" />}
-          />
-          <ServiceCard
-            title="Tvorba E-Shopů"
-            description="Koveme e-commerce platformy, které přetvářejí nákupní zážitek do plynulého a efektivního procesu. Od návrhu až po finální implementaci – dbáme na každý detail, aby váš online obchod zářil."
-            bgColor="#1C2D41"
-            icon={<FaShoppingCart className="h-6 w-6" />}
-          />
-          <ServiceCard
-            title="Tvorba webových stránek"
-            description="Vaše webová prezentace je vaší digitální vizitkou. Koveme weby, které přeměňují návštěvníky na věrné zákazníky a pomáhají vám vystoupit z davu."
-            bgColor="#132337"
-            icon={<FaGlobe className="h-6 w-6" />}
-          />
-          <ServiceCard
-            title="Tvorba aplikací"
-            description="Vstupte do světa mobilních a webových aplikací s řešeními, která jsou vytvořená právě pro vás. Koveme digitální nástroje, které vám pomohou efektivně řídit váš byznys a zůstat vždy o krok napřed."
-            bgColor="#0A192F"
-            icon={<FaMobileAlt className="h-6 w-6" />}
-          />
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} index={index} {...service} />
+          ))}
         </div>
       </div>
     </section>
