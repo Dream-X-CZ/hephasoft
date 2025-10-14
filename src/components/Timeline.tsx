@@ -1,7 +1,4 @@
-"use client"
-
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+"use client";
 
 const timeline = [
   {
@@ -35,55 +32,16 @@ const timeline = [
 ];
 
 export default function Example() {
-  let sectionRef = useRef<HTMLDivElement>(null)
-  let shouldReduceMotion = useReducedMotion()
-  let { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-  let smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 30,
-    mass: 0.4,
-  })
-  let progressScale = useTransform(smoothProgress, [0, 1], [0, 1])
-
-  let hiddenState = shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 32 }
-  let visibleState = shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }
-
   return (
-    <div ref={sectionRef} className="bg-white">
+    <div className="bg-white">
       {/* Nadpis nebo další úvodní informace lze přidat sem */}
 
       <main className="isolate pt-32">
         {/* Timeline sekce */}
-        <div className="relative mx-auto -mt-8 max-w-7xl px-6 pb-14 lg:px-8">
-          <motion.span
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 hidden h-px origin-left bg-gradient-to-r from-transparent via-accent/40 to-transparent lg:block"
-            style={{
-              scaleX: shouldReduceMotion ? 1 : progressScale,
-            }}
-          />
+        <div className="pb-14 mx-auto -mt-8 max-w-7xl px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.6 }}
-                variants={{
-                  hidden: hiddenState,
-                  visible: {
-                    ...visibleState,
-                    transition: {
-                      delay: index * 0.1,
-                      duration: 0.6,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
-                  },
-                }}
-              >
+            {timeline.map((item) => (
+              <div key={item.name}>
                 <time
                   dateTime={item.dateTime}
                   className="flex items-center text-sm font-semibold text-primary"
@@ -105,7 +63,7 @@ export default function Example() {
                   {item.name}
                 </p>
                 <p className="mt-1 text-base text-gray-600">{item.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
