@@ -1,6 +1,7 @@
 // src/components/Obrazek.tsx
 'use client'
 
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 
@@ -43,7 +44,7 @@ export const Obrazek: React.FC<ObrazekProps> = ({ src, alt, className, ...props 
       {/* Popup (modal) s větší verzí obrázku */}
       {isPopupOpen && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-75"
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-black bg-opacity-75"
           onClick={() => setIsPopupOpen(false)}
         >
           <div

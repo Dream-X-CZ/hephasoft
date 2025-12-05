@@ -1,4 +1,5 @@
 // src/components/ImageWithModal.tsx
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import clsx from 'clsx';
 
