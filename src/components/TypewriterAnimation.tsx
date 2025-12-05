@@ -27,7 +27,9 @@ export default function TypewriterAnimation() {
           setDisplayText(xText.slice(0, displayText.length - 1));
         }, 150);
       } else {
-        setPhase("typingY");
+        timer = setTimeout(() => {
+          setPhase("typingY");
+        }, 0);
       }
     } else if (phase === "typingY") {
       if (displayText.length < yText.length) {
