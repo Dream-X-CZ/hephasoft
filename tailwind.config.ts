@@ -1,6 +1,8 @@
 import { type Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 
+const displayFontStack = ['Satoshi', ...defaultTheme.fontFamily.sans].join(', ')
+
 export default {
   content: ['./src/**/*.{js,jsx,mdx,ts,tsx}'],
   theme: {
@@ -28,12 +30,9 @@ export default {
       fontFamily: {
         sans: ['Satoshi', ...defaultTheme.fontFamily.sans],
         display: [
-          ['Satoshi', ...defaultTheme.fontFamily.sans],
+          displayFontStack,
           {
-            fontVariationSettings: '"wdth" 125', // Added fontVariationSettings back, using "wdth" 100 as example
-            // Adjust fontVariationSettings based on Satoshi font's variable axes.
-            // Example: If you want to control weight, it might be '"wght" 600'
-            // Check the font documentation or experiment to find the correct settings.
+            fontVariationSettings: '"wdth" 125',
           },
         ],
       },

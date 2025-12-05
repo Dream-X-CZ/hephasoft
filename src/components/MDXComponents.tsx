@@ -25,7 +25,7 @@ export const MDXComponents = {
         <GrayscaleTransitionImage
           {...props}
           sizes="(min-width: 768px) 42rem, 100vw"
-          className="aspect-[16/10] w-full object-cover"
+          className="aspect-16/10 w-full object-cover"
         />
       </div>
     )
@@ -46,7 +46,7 @@ export const MDXComponents = {
     className,
     ...props
   }: React.ComponentPropsWithoutRef<typeof StatList>) {
-    return <StatList className={clsx('my-32 !max-w-none', className)} {...props} />
+    return <StatList className={clsx('my-32 max-w-none!', className)} {...props} />
   },
   StatListItem,
   table: function Table({
@@ -84,7 +84,7 @@ export const MDXComponents = {
   wrapper({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
     return (
       <div
-        className={clsx('mt-14 px-6 lg:mt-32 [&>*]:mx-auto [&>*]:max-w-3xl [&>:first-child]:!mt-0 [&>:last-child]:!mb-0', className)}
+        className={clsx('mt-14 px-6 lg:mt-32 *:mx-auto *:max-w-3xl *:first:mt-0! *:last:mb-0!', className)}
         {...props}
       />
     )

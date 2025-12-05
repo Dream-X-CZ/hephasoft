@@ -150,7 +150,7 @@ function Services() {
       <Container className="mt-16">
         <div className="lg:flex lg:items-center lg:justify-end">
           <div className="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
-            <FadeIn className="w-[33.75rem] flex-none lg:w-[45rem]">
+            <FadeIn className="w-135 flex-none lg:w-180">
               <StylizedImage
                 src={imageLaptop}
                 sizes="(min-width: 1024px) 41rem, 31rem"
@@ -158,7 +158,7 @@ function Services() {
               />
             </FadeIn>
           </div>
-          <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
+          <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-132 lg:pl-4">
             <ListItem title="Tvorba CRM">
               <br />
               Naše CRM systémy jsou kované s precizností, aby optimalizovaly vaše obchodní procesy a posilovaly vztahy se zákazníky. 
@@ -207,7 +207,7 @@ export default async function Home() {
       <Container className="mt-24 sm:mt-32 md:mt-56">
         <FadeIn className="max-w-3xl">
           {/* Vložený TypewriterAnimation inline uvnitř h1 */}
-          <h1 className="font-display text-7xl font-semibold tracking-tight text-accent [text-wrap:balance] sm:text-7xl">
+          <h1 className="font-display text-7xl font-semibold tracking-tight text-accent text-balance sm:text-7xl">
             <TypewriterAnimation />
           </h1>
           <p className="mt-7 text-xl text-accent/60">

@@ -98,7 +98,7 @@ function Team() {
                             {...person.image}
                             className="h-96 w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 motion-safe:group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-accent to-accent/0 to-40% p-6">
+                          <div className="absolute inset-0 flex flex-col justify-end bg-linear-to-t from-accent to-accent/0 to-40% p-6">
                             <p className="font-display text-base/6 font-semibold tracking-wide text-white">
                               {person.name}
                             </p>
